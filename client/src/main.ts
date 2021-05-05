@@ -7,7 +7,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 //process.env.PORT || 4000
-axios.defaults.baseURL = 'http://localhost:4000';
+//axios.defaults.baseURL = 'http://localhost:4000';
 axios.defaults.headers = {
     'Cache-Control': 'no-cache',
     'Pragma': 'no-cache',

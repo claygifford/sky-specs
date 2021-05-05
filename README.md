@@ -1,1 +1,1 @@
-"# sky-specs" 
+# sky-specs

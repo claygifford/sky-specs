@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: Inter var,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+}
+
+
+#app {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.wind-0{fill:#9FC7D6;}
+.wind-1{fill:#75A3BC;}
+
+.st0{fill:#9B999A;}
+.st1{fill:#718C26;}
+.st2{fill:#83A12C;}
+.st3{fill:#282F39;}
+.st4{fill:#293039;}
+.st5{fill:#82A12A;}
+.st6{fill:#637C1F;}
+.st7{fill:#3B4D10;}
+.st8{fill:#677C22;}
+.st9{fill:#6F8723;}
+.st10{fill:#2A313A;}
+.st11{fill:#657D21;}
+.st12{fill:#2B313B;}
+.st13{fill:#647C1F;}
+.st14{fill:#83A12A;}
+.st15{fill:#82A02A;}
+.st16{fill:#3B4E0F;}
+.st17{fill:#3A4C0E;}
+.st18{fill:#8A6239;}
+.st19{fill:#886436;}
+.st20{fill:#2A5C1E;}
+.st21{fill:#397D2D;}
+.st22{fill:#F3F9F3;}
+
+.rotate {
+    animation: rotation 4s infinite linear;
+    
+  }
+
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }

@@ -8,7 +8,7 @@ export default {
   actions: {
     async loadTurbines({commit}: any) {
       try {       
-        const resp = await axios.get('api/farm/getTurbines');
+        const resp = await axios.get('/api/farm/getTurbines');
         commit('SET_TURBINES', resp.data);
       } catch (error) {
           throw new Error(`API ${error}`);
@@ -17,7 +17,10 @@ export default {
 
     async getTurbine({commit}: any, id: number) {
       try {       
-        const resp = await axios.get(`api/farm/getTurbine`, { params: { id: id } });
+
+        console.log(axios.defaults.baseURL + ' base Url');
+
+        const resp = await axios.get('/api/farm/getTurbine', { params: { id: id } });
         commit('SET_TURBINE', resp.data);
         return resp.data;
       } catch (error) {

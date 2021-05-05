@@ -8,7 +8,7 @@ export default {
   actions: {
     async loadOrders({commit}: any) {
       try {       
-        const resp = await axios.get('api/maintenance/getOrders');
+        const resp = await axios.get('/api/maintenance/getOrders');
         commit('SET_ORDERS', resp.data);
       } catch (error) {
           throw new Error(`API ${error}`);
@@ -17,7 +17,7 @@ export default {
 
     async deleteOrder({commit}: any, id: number) {
       try {       
-        await axios.post('api/maintenance/deleteOrder', {id: id});
+        await axios.post('/api/maintenance/deleteOrder', {id: id});
         //commit('SET_ORDERS', resp.data);
       } catch (error) {
           throw new Error(`API ${error}`);
@@ -26,7 +26,7 @@ export default {
 
     async getOrdersForTurbine({commit}: any, id: number) {
       try {       
-        const resp = await axios.get(`api/maintenance/getOrdersForTurbine`, { params: { id: id } });
+        const resp = await axios.get('/api/maintenance/getOrdersForTurbine', { params: { id: id } });
         return resp.data;
       } catch (error) {
         throw new Error(`API ${error}`);
@@ -35,7 +35,7 @@ export default {
 
     async createOrder({commit}: any, order: any) {
       try {       
-        const resp = await axios.post(`api/maintenance/createOrder`, order);
+        const resp = await axios.post('/api/maintenance/createOrder', order);
         commit('ADD_ORDER', resp.data);
         return resp.data;
       } catch (error) {

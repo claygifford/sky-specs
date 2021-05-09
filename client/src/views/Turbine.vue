@@ -164,7 +164,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import TurbineIcon from '../icons/TurbineIcon.vue'
 import CreateOrderModal from '../modals/CreateOrderModal.vue'
@@ -208,7 +208,7 @@ export default {
     const showCreateOrder = ref(false)
     const loading = ref(false)
     const turbine = ref<Turbine>({})
-    const maintenance = ref<Array<Order>>([])
+    const maintenance = reactive<Array<Order>>([])
     const cards = ref()
     const turbineId = ref()
     return {
@@ -256,8 +256,10 @@ export default {
         }
       }      
     },
-    async loadMaintenance(id) {
-      this.maintenance = await this.$store.dispatch('maintenance/getOrdersForTurbine', id);
+    async loadMaintenance(id) {      
+      this.maintenance.length = 0;
+      var items = await this.$store.dispatch('maintenance/getOrdersForTurbine', id);
+      this.maintenance.splice(0, 0, ...items);
     },
     showCreateDialog() {
       this.turbineId = this.id;

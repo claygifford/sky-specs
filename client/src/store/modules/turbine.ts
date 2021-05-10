@@ -6,5 +6,6 @@ export default class Turbine {
         public id: number,
         public capacity: string,
         public health: string,
-        public energy: number) {}    
+        public energy: number
+    ) {}
 }

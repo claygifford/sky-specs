@@ -15,19 +15,19 @@
                   <div>
                     <div class="flex items-center">
                       <h1 class="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-                        {{turbine.name}}
+                        {{turbine?.name}}
                       </h1>
                     </div>
                     <dl class="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
                       <dt class="sr-only">Company</dt>
                       <dd class="flex items-center text-sm text-gray-500 font-medium capitalize sm:mr-6">
                         <OfficeBuildingIcon class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
-                        {{turbine.location}}
+                        {{turbine?.location}}
                       </dd>
                       <dt class="sr-only">Account status</dt>
                       <dd class="mt-3 flex items-center text-sm text-gray-500 font-medium sm:mr-6 sm:mt-0 capitalize">
                         <CheckCircleIcon class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400" aria-hidden="true" />
-                        {{turbine.status}}
+                        {{turbine?.status}}
                       </dd>
                     </dl>
                   </div>
@@ -101,7 +101,7 @@
                       </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                      <tr v-for="item in maintenance" :key="item.id" class="bg-white">
+                      <tr v-for="item in orders" :key="item?.id" class="bg-white">
                         <td class="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                           <div class="flex">
                             <a class="group inline-flex space-x-2 truncate text-sm">
@@ -164,7 +164,7 @@
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import TurbineIcon from '../icons/TurbineIcon.vue'
 import CreateOrderModal from '../modals/CreateOrderModal.vue'
@@ -207,8 +207,8 @@ export default {
     const sidebarOpen = ref(false)
     const showCreateOrder = ref(false)
     const loading = ref(false)
-    const turbine = ref<Turbine>({})
-    const maintenance = reactive<Array<Order>>([])
+    const turbine = ref()
+    const orders = ref()
     const cards = ref()
     const turbineId = ref()
     return {
@@ -216,7 +216,7 @@ export default {
       turbine,
       loading,
       cards,
-      maintenance,
+      orders,
       statusStyles,
       sidebarOpen,
       turbineId
@@ -256,10 +256,9 @@ export default {
         }
       }      
     },
-    async loadMaintenance(id) {      
-      this.maintenance.length = 0;
+    async loadMaintenance(id) {     
       var items = await this.$store.dispatch('maintenance/getOrdersForTurbine', id);
-      this.maintenance.splice(0, 0, ...items);
+      this.orders = items;
     },
     showCreateDialog() {
       this.turbineId = this.id;

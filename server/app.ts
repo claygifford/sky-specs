@@ -23,8 +23,6 @@ class App {
   private mountRoutes (): void {    
     const router = express.Router();        
     router.get(['/home', '/dashboard', '/maintenance'], (req, res) => {
-      //res.sendFile(__dirname + '/index.html');
-      //res.sendFile(path.resolve(__dirname, '.../public/index.html'));
       res.sendFile(path.join(__dirname, '../public', 'index.html'));
     });
     this.app.use('/', router);

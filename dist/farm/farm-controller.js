@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 class FarmController {
-    constructor() {
+    constructor(db) {
+        this.db = db;
         this.path = '/farm';
         this.router = express.Router();
         this.turbines = [

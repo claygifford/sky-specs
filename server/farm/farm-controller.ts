@@ -1,10 +1,11 @@
 import * as express from 'express';
+import Db from '../db';
 import Turbine from './turbine';
 
 class FarmController {
   public path = '/farm';
   public router = express.Router();
- 
+  
   private turbines: Turbine[] = [
     { 
         name: 'Turbine 1',
@@ -35,7 +36,7 @@ class FarmController {
     }
   ];
   
-  constructor() {
+  constructor(public db: Db) {
     this.intializeRoutes();
   }
  

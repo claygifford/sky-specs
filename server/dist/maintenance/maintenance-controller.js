@@ -17,7 +17,7 @@ class MaintenanceController {
         this.router = express.Router();
         this.orders = [
             {
-                name: 'fix blade 1',
+                name: 'fix blade 2',
                 type: 'Corrective maintenance',
                 id: 1,
                 turbineId: 1,

@@ -54,26 +54,28 @@ class MaintenanceController {
             }
         ];
         this.getOrders = (request, response) => __awaiter(this, void 0, void 0, function* () {
-            // try {
-            //   const { rows } = await this.db.query('select * from orders');
-            //   response.send(rows);
-            // } catch (err) {
-            //   throw err;
-            // }
-            response.send(this.orders);
+            try {
+                const { rows } = yield this.db.query('select * from orders');
+                response.send(rows);
+            }
+            catch (err) {
+                throw err;
+            }
+            //response.send(this.orders);
         });
         this.getOrdersForTurbine = (request, response) => __awaiter(this, void 0, void 0, function* () {
-            // try {
-            //   var id = +request.query.id;
-            //   const { rows } = await this.db.query('select * from orders where turbineid = $1', [id]);
-            //   response.send(rows);
-            // } catch (err) {
-            //   throw err;
-            // }
-            console.log('total orders ' + this.orders.length);
-            var orders = this.orders.filter(t => +t.turbineId === +request.query.id);
-            console.log(request.query.id + ' orders ' + orders.length);
-            response.send(orders);
+            try {
+                var id = +request.query.id;
+                const { rows } = yield this.db.query('select * from orders where turbineid = $1', [id]);
+                response.send(rows);
+            }
+            catch (err) {
+                throw err;
+            }
+            // console.log('total orders ' + this.orders.length);
+            // var orders = this.orders.filter(t => +t.turbineId === +request.query.id);
+            // console.log(request.query.id + ' orders ' + orders.length);
+            // response.send(orders);
         });
         this.createOrder = (request, response) => {
             const order = request.body;

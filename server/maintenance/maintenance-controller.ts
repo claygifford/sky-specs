@@ -57,29 +57,29 @@ class MaintenanceController {
   }
  
   getOrders = async (request: express.Request, response: express.Response) => {
-    // try {
-    //   const { rows } = await this.db.query('select * from orders');
-    //   response.send(rows);
-    // } catch (err) {
-    //   throw err;
-    // }
+    try {
+      const { rows } = await this.db.query('select * from orders');
+      response.send(rows);
+    } catch (err) {
+      throw err;
+    }
     
-    response.send(this.orders);
+    //response.send(this.orders);
   }
 
   getOrdersForTurbine = async (request: express.Request, response: express.Response) => {
-    // try {
-    //   var id = +request.query.id;
-    //   const { rows } = await this.db.query('select * from orders where turbineid = $1', [id]);
-    //   response.send(rows);
-    // } catch (err) {
-    //   throw err;
-    // }
-    console.log('total orders ' + this.orders.length);
+    try {
+      var id = +request.query.id;
+      const { rows } = await this.db.query('select * from orders where turbineid = $1', [id]);
+      response.send(rows);
+    } catch (err) {
+      throw err;
+    }
+    // console.log('total orders ' + this.orders.length);
 
-    var orders = this.orders.filter(t => +t.turbineId === +request.query.id);
-    console.log(request.query.id + ' orders ' + orders.length);
-    response.send(orders);
+    // var orders = this.orders.filter(t => +t.turbineId === +request.query.id);
+    // console.log(request.query.id + ' orders ' + orders.length);
+    // response.send(orders);
   }
 
   createOrder = (request: express.Request, response: express.Response) => {
